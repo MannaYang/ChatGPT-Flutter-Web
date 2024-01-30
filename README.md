@@ -242,10 +242,10 @@ Modify the maxWidth and height if necessary, then use riverpod refresh UI state.
 
 [screenshot](screenshot)
 
-<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/1.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/3.png" width="375" height="206" />
-<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/4.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/5.png" width="375" height="206" />
-<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/6.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/7.png" width="375" height="206" />
-<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/8.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/docker-compose.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/1.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/2.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/3.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/4.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/5.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/6.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/docker-compose.png" width="750" height="412" />
 
 ## LICENSE
 [LICENSE](LICENSE)
