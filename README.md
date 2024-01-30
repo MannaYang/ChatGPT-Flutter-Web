@@ -7,7 +7,7 @@ Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal p
 ## Features
 
 - [x] Supported flutter stable(v3.16.8)and pub latest version | dart stable(v3.2.5)
-- [x] Supported Riverpod(v2.4.3)state manager ｜ Go_Router handle global routers
+- [x] Supported Riverpod(v2.4.9)state manager ｜ Go_Router handle global routers
 - [x] Supported websocket | recording and player | markdown display text/audio/image messgae list
 - [x] Supported JWT signing｜ FastApi middleware handle CORS、Exception、Request interceptor
 - [x] Supported Sqlalchemy、mysql、redis data storage API ｜ use Celery、Flower to execute and monitor the background tasks
