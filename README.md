@@ -2,6 +2,8 @@
 
 Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal project. Use JWT, Mysql, Redis, Sqlalchemy to realize user signing and chat data storage; use Celery, Flower to execute and monitor the background tasks.
 
+[中文文档](https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/README_zh.md)
+
 ## Features
 
 - [x] Supported flutter stable(v3.16.8)and pub latest version | dart stable(v3.2.5)
@@ -18,9 +20,9 @@ Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal p
 
 #### Clone project backend and modify env file
 
-> .env
+> .env   -- local
 >
-> .env.prod
+> .env.prod   -- deploy
 
 1. Set OpenAI api key : https://platform.openai.com/api-keys
 2. Set Pinecone vector db api key : https://www.pinecone.io/
