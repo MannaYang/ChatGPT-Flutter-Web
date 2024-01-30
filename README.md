@@ -1,53 +1,52 @@
 # Flutter-ChatGPT
-    
-基于Flutter跨平台和FastApi轻量级的ChatGPT Web多模态项目,
-使用JWT、Mysql、Redis、Sqlalchemy实现用户验签及聊天数据存储;使用Celery、Flower执行并监控后台任务.
+
+Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal project. Use JWT, Mysql, Redis, Sqlalchemy to realize user signing and chat data storage; use Celery, Flower to execute and monitor the background tasks.
 
 ## Features
 
-- [x] 支持flutter stable(v3.16.8)及使用的pub最新版本 | dart stable(v3.2.5)
-- [x] 支持Riverpod(v2.4.3)版本状态管理 ｜ Go_Router处理全局路由
-- [x] 支持websocket通信 | record录音及player | markdown 展示文本/语音/图片等消息列表
-- [x] 支持JWT验签 ｜ FastApi中间件处理CORS、Exception、Request请求拦截
-- [x] 支持Sqlalchemy、mysql、redis存储及缓存用户信息与对话消息API ｜ 采用Celery执行后台任务
-- [x] 支持Pinecone向量数据库 ｜ RetrievalAgent检索向量文档
-- [x] 支持docker-compose部署
-- [x] 支持flutter web多语言展示，yaml文件中的pub库均选择支持多平台应用
-- [ ] 支持Android/iOS/MacOS/Windows,移动端适配需要修改UI/UX
+- [x] Supported flutter stable(v3.16.8)and pub latest version | dart stable(v3.2.5)
+- [x] Supported Riverpod(v2.4.3)state manager ｜ Go_Router handle global routers
+- [x] Supported websocket | recording and player | markdown display text/audio/image messgae list
+- [x] Supported JWT signing｜ FastApi middleware handle CORS、Exception、Request interceptor
+- [x] Supported Sqlalchemy、mysql、redis data storage API ｜ use Celery、Flower to execute and monitor the background tasks
+- [x] Supported Pinecone vector db ｜ RetrievalAgent vector docs
+- [x] Supported docker-compose deploy
+- [x] Supported flutter web localizations | yaml file all choose to support multi-platform applications
+- [ ] Supported Android/iOS/MacOS/Windows | mobile adaptation requires UI/UX changes
 
 ## QuickStart
 
-#### Clone项目并修改backend目录下环境配置文件
+#### Clone project backend and modify env file
 
 > .env
 >
 > .env.prod
 
-1. 设置OpenAI api key : https://platform.openai.com/api-keys
-2. 设置Pinecone向量数据库 api key : https://www.pinecone.io/
-3. 根据项目需求修改mysql连接地址及其参数配置，DATABASE_URL默认本地地址
-4. 根据项目需求修改redis连接地址，REDIS_URL默认本地地址
-5. 根据项目需求修改Celery缓存地址，CELERY_BROKER，CELERY_BACKEND
+1. Set OpenAI api key : https://platform.openai.com/api-keys
+2. Set Pinecone vector db api key : https://www.pinecone.io/
+3. Modify Mysql url and args config if necessary, DATABASE_URL default localhost
+4. Modify Redis url and args config if necessary, REDIS_URL default localhost
+5. Modify Celery url if necessary, CELERY_BROKER，CELERY_BACKEND default localhost
 
-#### 基于docker部署，如果未安装请先下载 : https://www.docker.com/
+#### Base on docker deploy，If not installed, please download : https://www.docker.com/
 
-启动docker,进入项目ChatGPT-Flutter-Web
+Start docker,cd ChatGPT-Flutter-Web
 
 ```docker
 docker-compose up -d --build
 ```
 
-如果需要查看哪些容器启动成功，执行
+If need to view which containers started successfully, run
 
 ```docker
 docker-compose ps
 ```
 
-**执行成功后如下图所示**
+**If running successfully will be show like this**
 
 ![docker-compose.png](screenshot%2Fen%2Fdocker-compose.png)
 
-可在docker内查看各容器服务的运行日志
+Your can view logs within docker, run
 
 ```docker
 docker-compose logs backend
@@ -58,16 +57,15 @@ docker-compose logs celery
 ...
 ```
 
-frontend/backend目录下分别有各自的Dockerfile,根目录的docker-compose.yml会执行该配置，backend目录下
-提供init.sql用于初始化数据库
+root directory docker-compose.yml will be scan and execute frontend/backend each Dockerfile，backend directory init.sql to init database
 
-#### 部署成功后访问 frontend/backend/flower
+#### Visit frontend/backend/flower after successful deployment
 
 - frontend : 127.0.0.1:3000
 - backend : 127.0.0.1:8000/docs
 - flower : 127.0.0.1:5555
 
-如果部署失败，请根据日志重新修改docker-compose或是项目调整代码，再次执行
+If fails, check docker logs or modify docker-compse config or project code, then run
 
 ```docker
 docker-compose down
@@ -76,7 +74,7 @@ docker-compse up -d --build
 
 ## Project Structure
 
-#### 根目录工程结构
+#### Root Project Structure
 
 ChatGPT-Flutter-Web
 
@@ -90,11 +88,11 @@ ChatGPT-Flutter-Web
 └── screenshot
 ```
 
-#### 后端backend工程结构，其中
+#### Backend Project Structure
 
-- data 目录存放默认的向量化文档，
-- app/attach 用于存储上传下载的文件
-- db 用于处理Sqlalchemy数据库及表定义操作
+- data : Stores the default vectorized document
+- app/attach : Stores the uploaded and downloaded file
+- db : Handle Sqlalchemy db and table define
 
 ```
 ├── app
@@ -111,12 +109,12 @@ ChatGPT-Flutter-Web
 └── .gitignore
 ```
 
-#### 前端frontend工程结构，其中
+#### Frontend Project Structure
 
-- pages 目录存放Widget pages
-- service 公用服务
-- widget 自定义目录存放Widget
-- theme 设置Material color
+- pages : Stores Widget pages
+- service : Common service
+- widget : Custom Widget
+- theme : Config material color
 
 ```
 ├── lib
@@ -143,23 +141,23 @@ ChatGPT-Flutter-Web
 
 ## Version Description
 
-#### requirements.txt 中如遇版本安装问题，请及时修改为最新版本
+#### requirements.txt if occor problem,please modify it to the latest version
 
-> langchain v0.1.3,较之前的版本官方有包名级别聚合变更，请注意！
+> langchain v0.1.3 : With previous version the package name level aggregation has changed, please note!
 >
-> pinecone-client v3.0.2,较之前的版本官方有包名级别聚合变更，请注意！
+> pinecone-client v3.0.2 : With previous version the package name level aggregation has changed, please note!
 >
-> openai v1.9.0,较之前的版本官方有包名级别聚合变更，请注意！
+> openai v1.9.0 : With previous version the package name level aggregation has changed, please note!
 
-#### pubspec.yaml 中如遇版本安装问题，请及时修改为最新版本
+#### pubspec.yaml if occor problem,please modify it to the latest version
 
-> 目前已测试并调整为pub仓库最新版本，如有问题请及时提issue
+> Currently tested and choosed pub latest version repository, if occur problems please write issue with me.
 
-## 自定义Markdown展示图片及语音Tag
+## Custom Markdown display image and audio tag
 
-官方文档地址 : https://github.com/dart-lang/markdown
+Markdown Library : https://github.com/dart-lang/markdown
 
-在frontend/lib/widget模块下[custom_markdown.dart](frontend%2Flib%2Fwidget%2Fcustom_markdown.dart)
+at frontend/lib/widget package [custom_markdown.dart](frontend%2Flib%2Fwidget%2Fcustom_markdown.dart)
 ```dart
 ///
 /// Custom chat message display [markdown] style
@@ -203,16 +201,18 @@ class CustomMarkdown extends StatelessWidget {
   }
 }
 ```
-项目中实现了简便的处理backend返回带有audio标签tag的文本，用于展示audio并点击播放；同时简便定义code style
+Project implements a simple handling of the backend to return the text with the audio tag, which is used to display the audio and click to play; 
+and a simple definition of the code style.
 > CustomAudioTagSyntax
-> 
+>
 > CustomAudioBuilder
-> 
-> CustomSyntaxHighlighter - 代码高亮
+>
+> CustomSyntaxHighlighter - Code Highlighte
 
 
-## Flutter Web输入框动态高度计算
-输入框跟随文本长度自动换行，复制粘贴时光标滚动到文本末尾[multi_modal_input.dart](frontend%2Flib%2Fpages%2Fchat%2Fview%2Finput%2Fmulti_modal_input.dart)
+## Flutter Web TextField dynamic height calculation
+TextField follows the text length automatic line feeds，when copying and pasting the cursor will be scroll to end
+[multi_modal_input.dart](frontend%2Flib%2Fpages%2Fchat%2Fview%2Finput%2Fmulti_modal_input.dart)
 ```dart
   ///
   /// Calculate input height
@@ -232,11 +232,11 @@ class CustomMarkdown extends StatelessWidget {
     final totalHeight = minInputHeight * (lines == 0 ? 1 : lines);
     if (totalHeight > 152) return (152, lineHeight * lines);
     return (totalHeight, lineHeight * lines);
-  }  
+  }
 ```
-请根据实际需要修改响应阈值，并调用Riverpod刷新UI状态
+Modify the maxWidth and height if necessary, then use riverpod refresh UI state.
 
-## 部署后访问Flutter Web效果截图
+## Deployment Flutter Web Screenshot
 
 [screenshot](screenshot)
 
