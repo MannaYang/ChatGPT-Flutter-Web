@@ -6,7 +6,7 @@
 ## Features
 
 - [x] 支持flutter stable(v3.16.8)及使用的pub最新版本 | dart stable(v3.2.5)
-- [x] 支持Riverpod(v2.4.3)版本状态管理 ｜ Go_Router处理全局路由
+- [x] 支持Riverpod(v2.4.9)版本状态管理 ｜ Go_Router处理全局路由
 - [x] 支持websocket通信 | record录音及player | markdown 展示文本/语音/图片等消息列表
 - [x] 支持JWT验签 ｜ FastApi中间件处理CORS、Exception、Request请求拦截
 - [x] 支持Sqlalchemy、mysql、redis存储及缓存用户信息与对话消息API ｜ 采用Celery执行后台任务
