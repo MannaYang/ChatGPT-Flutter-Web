@@ -239,20 +239,11 @@ class CustomMarkdown extends StatelessWidget {
 ## 部署后访问Flutter Web效果截图
 
 [screenshot](screenshot)
-<style>
-img {
-    width: 375px;
-    height: 206px;
-}
-</style>
-![1.png](screenshot%2Fzh%2F1.png)
-![3.png](screenshot%2Fzh%2F3.png)
-![4.png](screenshot%2Fzh%2F4.png)
-![5.png](screenshot%2Fzh%2F5.png)
-![6.png](screenshot%2Fzh%2F6.png)
-![7.png](screenshot%2Fzh%2F7.png)
-![8.png](screenshot%2Fzh%2F8.png)
-![docker-compose.png](screenshot%2Fzh%2Fdocker-compose.png)
+
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/1.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/3.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/4.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/5.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/6.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/7.png" width="375" height="206" />
+<img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/8.png" width="375" height="206" /><img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/zh/docker-compose.png" width="375" height="206" />
 
 ## LICENSE
 [LICENSE](LICENSE)
