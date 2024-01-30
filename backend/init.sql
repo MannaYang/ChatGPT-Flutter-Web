@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS ai_my;
+
+USE ai_my;
