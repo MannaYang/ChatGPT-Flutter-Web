@@ -1,4 +1,4 @@
-# Flutter-ChatGPT
+# ChatGPT-Flutter-Web
     
 基于Flutter跨平台和FastApi轻量级的ChatGPT Web多模态项目,
 使用JWT、Mysql、Redis、Sqlalchemy实现用户验签及聊天数据存储;使用Celery、Flower执行并监控后台任务.
