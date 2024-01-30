@@ -1,4 +1,4 @@
-# Flutter-ChatGPT
+# ChatGPT-Flutter-Web
 
 Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal project. Use JWT, Mysql, Redis, Sqlalchemy to realize user signing and chat data storage; use Celery, Flower to execute and monitor the background tasks.
 
