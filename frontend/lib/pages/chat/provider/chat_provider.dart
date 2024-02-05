@@ -47,7 +47,8 @@ StreamController<dynamic> streamControl(StreamControlRef ref) {
 ///
 /// Send Socket
 ///
-@Riverpod(keepAlive: true)
+// @Riverpod(keepAlive: true)
+@riverpod
 WebSocketChannel send(SendRef ref) {
   const backendWebSocketUrl =
       String.fromEnvironment('BACKEND_WS_URL', defaultValue: ApiProvider.wsUrl);
@@ -60,7 +61,8 @@ WebSocketChannel send(SendRef ref) {
 ///
 /// Receive Socket
 ///
-@Riverpod(keepAlive: true)
+// @Riverpod(keepAlive: true)
+@riverpod
 WebSocketChannel receive(ReceiveRef ref) {
   const backendWebSocketUrl =
       String.fromEnvironment('BACKEND_WS_URL', defaultValue: ApiProvider.wsUrl);

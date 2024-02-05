@@ -1,5 +1,6 @@
 import asyncio
 import json
+from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI, Request, HTTPException, Depends
@@ -23,8 +24,19 @@ from app.api.task.task import save_message_db_task, group_db_conversation_messag
 from app.db.database import engine, Base, get_db_session
 from app.db.schemas import ResponseModel
 
-app = FastAPI()
-app.mount("/static", StaticFiles(directory="app/attach"), name="static")
+
+@asynccontextmanager
+async def lifespan(start_app: FastAPI):
+    logger.info(f"Initializing the database...{start_app.routes}")
+    async with engine.begin() as conn:
+        # await conn.run_sync(Base.metadata.drop_all)
+        await conn.run_sync(Base.metadata.create_all)
+        logger.info("The database and tables have been initialized successfully.")
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
+app.mount("/attach", StaticFiles(directory="app/attach"), name="attach")
 app.add_middleware(
     CORSMiddleware,
     # When deploying to production, make sure to set `allow_origins=["Host url"]`,not `allow_origins=["*"]`
@@ -56,12 +68,13 @@ async def http_exception_handler(request, exception):
     return Response(content=data.json(), headers=headers)
 
 
-@app.on_event("startup")
-async def startup_event():
-    async with engine.begin() as conn:
-        # await conn.run_sync(Base.metadata.drop_all)
-        await conn.run_sync(Base.metadata.create_all)
-        logger.info("The database and tables have been initialized successfully.")
+# This method has been deprecated, please use lifespan()
+# @app.on_event("startup")
+# async def startup_event():
+#     async with engine.begin() as conn:
+#         # await conn.run_sync(Base.metadata.drop_all)
+#         await conn.run_sync(Base.metadata.create_all)
+#         logger.info("The database and tables have been initialized successfully.")
 
 
 @app.middleware("http")
@@ -75,7 +88,7 @@ async def check_authentication(request: Request, call_next):
         case url_str if (any(url in url_str for url in white_list)
                          or request.url.port == 6379):
             return await call_next(request)
-        case url_str if "static/audio" in url_str:
+        case url_str if "attach/audio" in url_str:
             access_token: str = await get_query_token(request)
         case _:
             access_token: str = await get_request_token(request)

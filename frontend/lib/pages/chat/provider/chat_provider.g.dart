@@ -58,7 +58,7 @@ final streamControlProvider =
 );
 
 typedef StreamControlRef = AutoDisposeProviderRef<StreamController<dynamic>>;
-String _$sendHash() => r'89839eda22bacdb0b82884e13c981d0e753abf2a';
+String _$sendHash() => r'7a121a9b7080e0e22491bf4593cec0f8dbf2af8f';
 
 ///
 /// Send Socket
@@ -66,7 +66,7 @@ String _$sendHash() => r'89839eda22bacdb0b82884e13c981d0e753abf2a';
 ///
 /// Copied from [send].
 @ProviderFor(send)
-final sendProvider = Provider<WebSocketChannel>.internal(
+final sendProvider = AutoDisposeProvider<WebSocketChannel>.internal(
   send,
   name: r'sendProvider',
   debugGetCreateSourceHash:
@@ -75,8 +75,8 @@ final sendProvider = Provider<WebSocketChannel>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef SendRef = ProviderRef<WebSocketChannel>;
-String _$receiveHash() => r'50fb5e71d9d06f34382e3b3840347a42aacd262d';
+typedef SendRef = AutoDisposeProviderRef<WebSocketChannel>;
+String _$receiveHash() => r'3c99ad5082f46db0bdd55afd64ade9f83d653a0c';
 
 ///
 /// Receive Socket
@@ -84,7 +84,7 @@ String _$receiveHash() => r'50fb5e71d9d06f34382e3b3840347a42aacd262d';
 ///
 /// Copied from [receive].
 @ProviderFor(receive)
-final receiveProvider = Provider<WebSocketChannel>.internal(
+final receiveProvider = AutoDisposeProvider<WebSocketChannel>.internal(
   receive,
   name: r'receiveProvider',
   debugGetCreateSourceHash:
@@ -93,7 +93,7 @@ final receiveProvider = Provider<WebSocketChannel>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef ReceiveRef = ProviderRef<WebSocketChannel>;
+typedef ReceiveRef = AutoDisposeProviderRef<WebSocketChannel>;
 String _$sendStreamHash() => r'89ba545e610a19e0548c0aa41bf89c16a5c2ca67';
 
 ///

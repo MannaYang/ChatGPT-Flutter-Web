@@ -18,7 +18,7 @@ python-dotenv==1.0.1
 python-jose==3.3.0
 redis==5.0.1
 python-multipart==0.0.6
-cryptography==41.0.5
+cryptography==42.0.2
 aiomysql==0.2.0
 bcrypt==4.1.2
 SQLAlchemy==2.0.23

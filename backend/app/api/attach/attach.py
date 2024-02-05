@@ -64,10 +64,10 @@ async def upload_file(request: Request, files: UploadFile = File(...)):
     if path_tag == "audio":
         wav_trim_silence.apply_async((file_path,))
         # path_url = f"{request.url.scheme}://{request.headers['host']}/static/{path_tag}/{res_id}.{file_ext}"
-        audio_url = f"{request.url.scheme}://{request.headers['host']}/static/{path_tag}/{res_id}.{file_ext}"
+        audio_url = f"{request.url.scheme}://{request.headers['host']}/attach/{path_tag}/{res_id}.{file_ext}"
         path_url = f' <audio>{audio_url}</audio> '
     else:
-        path_url = f"![]({request.url.scheme}://{request.headers['host']}/static/{path_tag}/{res_id}.{file_ext})"
+        path_url = f"![]({request.url.scheme}://{request.headers['host']}/attach/{path_tag}/{res_id}.{file_ext})"
     return ResponseModel(msg="[" + files.filename + "]upload success",
                          data={"file_name": file_name, "res_id": f"{path_url}"})
 
@@ -93,7 +93,7 @@ async def generate_image(input_str: str, host: str):
         response_format="b64_json"
     )
     file_name = save_base64_image(response.data, "app/attach/image")
-    image = "".join([f"![](http://{host}/static/image/{name})" for name in file_name])
+    image = "".join([f"![](http://{host}/attach/image/{name})" for name in file_name])
     return image
 
 
@@ -104,7 +104,7 @@ async def edit_image(image_path: str, input_str: str, host: str):
         prompt=input_str,
         n=1, size="256x256", response_format="b64_json")
     file_name = save_base64_image(response.data, "app/attach/image")
-    image = "".join([f"![](http://{host}/static/image/{name})" for name in file_name])
+    image = "".join([f"![](http://{host}/attach/image/{name})" for name in file_name])
     return image
 
 
@@ -117,7 +117,7 @@ async def generate_audio(input_str: str, host: str):
         input=input_str
     )
     await response.astream_to_file(speech_file_path)
-    audio_path = f"http://{host}/static/audio/{res_id}.{'wav'}"
+    audio_path = f"http://{host}/attach/audio/{res_id}.{'wav'}"
     audio = f"<audio>{audio_path}</audio>"
     return audio
 

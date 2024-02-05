@@ -7,6 +7,6 @@ import 'package:frontend/service/utils/sp_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
-  SpProvider().initPrefs();
+  await SpProvider().initPrefs();
   runApp(ProviderScope(child: TranslationProvider(child: const Application())));
 }

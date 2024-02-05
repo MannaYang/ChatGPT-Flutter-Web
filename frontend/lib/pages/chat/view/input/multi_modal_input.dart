@@ -203,15 +203,15 @@ class _MultiModalInputState extends ConsumerState<MultiModalInput> {
                           ],
                         )),
                   ]),
-              RawKeyboardListener(
-                  focusNode: _focusNode,
-                  onKey: (event) {
-                    // if (event.logicalKey == LogicalKeyboardKey.enter ||
-                    //     event.logicalKey == LogicalKeyboardKey.numpadEnter) {
-                    //   if (!event.isShiftPressed) handleInputStr(allowInput);
-                    // }
-                  },
-                  child: const SizedBox(width: 0, height: 0))
+              // RawKeyboardListener(
+              //     focusNode: _focusNode,
+              //     onKey: (event) {
+              //       // if (event.logicalKey == LogicalKeyboardKey.enter ||
+              //       //     event.logicalKey == LogicalKeyboardKey.numpadEnter) {
+              //       //   if (!event.isShiftPressed) handleInputStr(allowInput);
+              //       // }
+              //     },
+              //     child: const SizedBox(width: 0, height: 0))
             ])));
   }
 

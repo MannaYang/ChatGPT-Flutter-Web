@@ -1,11 +1,16 @@
-import 'package:frontend/service/ext/ext.dart';
-import 'package:frontend/widget/show_snackbar.dart';
-import 'package:http/http.dart' as http;
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/chat/provider/chat_provider.dart';
+import 'package:frontend/service/ext/ext.dart';
 import 'package:frontend/service/file/file_provider.dart';
-import 'package:record/record.dart';
+import 'package:frontend/service/utils/device_provider.dart';
+import 'package:frontend/widget/show_snackbar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
+import 'package:record/record.dart';
 
 ///
 /// Audio input
@@ -81,14 +86,23 @@ class MultiModalAudio extends ConsumerWidget {
         ref.read(allowRecordProvider.notifier).updateStatus(false);
         return;
       }
-      final result = await http.get(Uri.parse(path));
-      ref.read(uploadFileProvider.notifier).uploadFileUrl(result.bodyBytes);
+      if (DeviceProvider.isWeb) {
+        final response = await http.get(Uri.parse(path));
+        ref.read(uploadFileProvider.notifier).uploadFileUrl(response.bodyBytes);
+      } else {
+        final result = await File(path).readAsBytes();
+        ref.read(uploadFileProvider.notifier).uploadFileUrl(result);
+      }
       ref.read(allowRecordProvider.notifier).updateStatus(false);
       return;
     }
     if (await recorder.hasPermission()) {
+      var path = "";
+      if (!DeviceProvider.isWeb) {
+        path = await _getPath();
+      }
       await recorder.start(const RecordConfig(encoder: AudioEncoder.wav),
-          path: "");
+          path: path);
     }
     ref.read(allowRecordProvider.notifier).updateStatus(true);
   }
@@ -115,5 +129,13 @@ class MultiModalAudio extends ConsumerWidget {
       return false;
     }
     return true;
+  }
+
+  Future<String> _getPath() async {
+    final dir = await getApplicationDocumentsDirectory();
+    return p.join(
+      dir.path,
+      '${DateTime.now().millisecondsSinceEpoch}.wav',
+    );
   }
 }
