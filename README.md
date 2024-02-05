@@ -1,6 +1,8 @@
 # ChatGPT-Flutter-Web
 
-Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal project. Use JWT, Mysql, Redis, Sqlalchemy to realize user signing and chat data storage; use Celery, Flower to execute and monitor the background tasks.
+Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal project. Use JWT, Mysql, Redis,
+Sqlalchemy to realize user signing and chat data storage; use Celery, Flower to execute and monitor the background
+tasks.
 
 [中文文档](https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/README_zh.md)
 
@@ -14,15 +16,16 @@ Based on Flutter cross-platform and FastApi lightweight ChatGPT Web multimodal p
 - [x] Supported Pinecone vector db ｜ RetrievalAgent vector docs
 - [x] Supported docker-compose deploy
 - [x] Supported flutter web localizations | yaml file all choose to support multi-platform applications
-- [ ] Supported Android/iOS/MacOS/Windows | mobile adaptation requires UI/UX changes
+- [x] Supported flutter macOS UI | FastApi static file not supported
+- [ ] Supported Android/iOS/Windows/Linux | mobile adaptation requires UI/UX changes
 
 ## QuickStart
 
 #### Clone project backend and modify env file
 
-> .env   -- local
+> .env -- local
 >
-> .env.prod   -- deploy
+> .env.prod -- deploy
 
 1. Set OpenAI api key : https://platform.openai.com/api-keys
 2. Set Pinecone vector db api key : https://www.pinecone.io/
@@ -59,7 +62,8 @@ docker-compose logs celery
 ...
 ```
 
-root directory docker-compose.yml will be scan and execute frontend/backend each Dockerfile，backend directory init.sql to init database
+root directory docker-compose.yml will be scan and execute frontend/backend each Dockerfile，backend directory init.sql
+to init database
 
 #### Visit frontend/backend/flower after successful deployment
 
@@ -160,6 +164,7 @@ ChatGPT-Flutter-Web
 Markdown Library : https://github.com/dart-lang/markdown
 
 at frontend/lib/widget package [custom_markdown.dart](frontend%2Flib%2Fwidget%2Fcustom_markdown.dart)
+
 ```dart
 ///
 /// Custom chat message display [markdown] style
@@ -203,7 +208,9 @@ class CustomMarkdown extends StatelessWidget {
   }
 }
 ```
-Project implements a simple handling of the backend to return the text with the audio tag, which is used to display the audio and click to play; 
+
+Project implements a simple handling of the backend to return the text with the audio tag, which is used to display the
+audio and click to play;
 and a simple definition of the code style.
 > CustomAudioTagSyntax
 >
@@ -211,10 +218,11 @@ and a simple definition of the code style.
 >
 > CustomSyntaxHighlighter - Code Highlighte
 
-
 ## Flutter Web TextField dynamic height calculation
+
 TextField follows the text length automatic line feeds，when copying and pasting the cursor will be scroll to end
 [multi_modal_input.dart](frontend%2Flib%2Fpages%2Fchat%2Fview%2Finput%2Fmulti_modal_input.dart)
+
 ```dart
   ///
   /// Calculate input height
@@ -236,6 +244,7 @@ TextField follows the text length automatic line feeds，when copying and pastin
     return (totalHeight, lineHeight * lines);
   }
 ```
+
 Modify the maxWidth and height if necessary, then use riverpod refresh UI state.
 
 ## Deployment Flutter Web Screenshot
@@ -248,5 +257,6 @@ Modify the maxWidth and height if necessary, then use riverpod refresh UI state.
 <img src="https://github.com/MannaYang/ChatGPT-Flutter-Web/blob/main/screenshot/en/docker-compose.png" width="750" height="412" />
 
 ## LICENSE
+
 [LICENSE](LICENSE)
 

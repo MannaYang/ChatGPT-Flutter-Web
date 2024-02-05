@@ -13,7 +13,8 @@
 - [x] 支持Pinecone向量数据库 ｜ RetrievalAgent检索向量文档
 - [x] 支持docker-compose部署
 - [x] 支持flutter web多语言展示，yaml文件中的pub库均选择支持多平台应用
-- [ ] 支持Android/iOS/MacOS/Windows,移动端适配需要修改UI/UX
+- [x] 支持flutter macOS桌面UI | FastApi静态文件访问暂不支持
+- [ ] 支持Android/iOS/Windows/Linux,移动端适配需要修改UI/UX
 
 ## QuickStart
 
